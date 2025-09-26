@@ -1,118 +1,17 @@
 ---
-import Layout from '../layouts/BlogPost.astro';
+import IssueList from '../components/IssueList.astro';
+
+const items = [
+  {
+    text: "This is the first item. It has a description on the left.",
+    imgSrc: "/images/example1.jpg",
+    imgAlt: "Example 1"
+  },
+  {
+    text: "This is the second item. The image is also on the right.",
+    imgSrc: "/images/example2.jpg",
+    imgAlt: "Example 2"
+  }
+];
 ---
-
-<Layout
-  title="Common Problems in Film Developing"
-  description="A list of frequent film developing issues, their symptoms, and illustrations."
-  pubDate={new Date('August 08 2021')}
-  heroImage="/blog-placeholder-about.jpg"
->
-  <h1>Common Problems in Film Developing</h1>
-  <p>Film developing can be tricky! Here’s a list of frequent issues, how to spot them, and what they might look like.</p>
-  <hr />
-
-  <h2>1. <strong>Underdeveloped Film</strong></h2>
-  <ul>
-    <li>Negatives appear thin and light</li>
-    <li>Prints are faint with low contrast</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Underdeveloped_film_example.jpg" alt="Underdeveloped Film Example" width="400" />
-
-  <hr />
-
-  <h2>2. <strong>Overdeveloped Film</strong></h2>
-  <ul>
-    <li>Negatives are very dark and dense</li>
-    <li>Prints have high contrast, loss of detail in highlights</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/2/2d/Overdeveloped_film_example.jpg" alt="Overdeveloped Film Example" width="400" />
-
-  <hr />
-
-  <h2>3. <strong>Uneven Development</strong></h2>
-  <ul>
-    <li>Streaks, blotches, or uneven density across the film</li>
-    <li>Often caused by insufficient agitation</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Uneven_development_film.jpg" alt="Uneven Development" width="400" />
-
-  <hr />
-
-  <h2>4. <strong>Water Marks or Drying Marks</strong></h2>
-  <ul>
-    <li>Spots or streaks on negatives after drying</li>
-    <li>Usually from hard water or improper drying</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/4/4e/Film_water_marks.jpg" alt="Water Marks" width="400" />
-
-  <hr />
-
-  <h2>5. <strong>Scratches</strong></h2>
-  <ul>
-    <li>Thin, straight lines running through the image</li>
-    <li>Caused by handling film roughly or dirty equipment</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/9/9c/Film_scratches_example.jpg" alt="Film Scratches" width="400" />
-
-  <hr />
-
-  <h2>6. <strong>Reticulation</strong></h2>
-  <ul>
-    <li>Cracked or wrinkled emulsion, looks like a network of lines</li>
-    <li>Caused by sudden temperature changes during processing</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/3/3b/Film_reticulation_example.jpg" alt="Reticulation" width="400" />
-
-  <hr />
-
-  <h2>7. <strong>Fogged Film</strong></h2>
-  <ul>
-    <li>Overall gray or hazy negatives</li>
-    <li>Caused by light leaks or expired film</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Fogged_film_example.jpg" alt="Fogged Film" width="400" />
-
-  <hr />
-
-  <h2>8. <strong>Air Bells (Bubbles)</strong></h2>
-  <ul>
-    <li>Small, round, clear spots on negatives</li>
-    <li>Caused by air bubbles sticking to film during development</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/5/5d/Air_bells_film_example.jpg" alt="Air Bells" width="400" />
-
-  <hr />
-
-  <h2>9. <strong>Chemical Stains</strong></h2>
-  <ul>
-    <li>Colored or dark stains on negatives</li>
-    <li>Usually from incomplete washing or fixer residue</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/1/1e/Chemical_stains_film.jpg" alt="Chemical Stains" width="400" />
-
-  <hr />
-
-  <h2>10. <strong>Light Leaks</strong></h2>
-  <ul>
-    <li>Bright, irregular patches or streaks on negatives</li>
-    <li>Caused by accidental exposure to light</li>
-  </ul>
-  <p><strong>Illustration:</strong></p>
-  <img src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Light_leak_film_example.jpg" alt="Light Leaks" width="400" />
-
-  <hr />
-
-  <blockquote>
-    <strong>Tip:</strong> Always handle film with care, use clean equipment, and follow temperature and timing instructions closely to avoid these issues!
-  </blockquote>
-</Layout>
+<IssueList items={items} />
