@@ -1,8 +1,8 @@
 {
   "name": "shopthuocfilmgithub",
-  "description": "Build a personal website, blog, or portfolio with Astro.",
+  "description": "Film photography shop, blog and guides.",
   "cloudflare": {
-    "label": "Astro Framework Starter",
+    "label": "Analog photography",
     "products": [
       "Workers"
     ],

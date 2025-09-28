@@ -9,7 +9,9 @@ const { items = [] } = Astro.props;
   {items.map(item => (
     <div class="item">
       <div class="item-text">
-        <p>{item.text}</p>
+        <p><strong>Symptom:</strong> {item.symptom}</p>
+        <p><strong>Causes:</strong> {item.causes}</p>
+        <p><strong>Prevention:</strong> {item.prevention}</p>
       </div>
       <div class="item-image">
         <img src={item.imgSrc} alt={item.imgAlt || ''} />
@@ -18,34 +20,81 @@ const { items = [] } = Astro.props;
   ))}
 </div>
 
+
 <style>
 .item-list {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 2.5rem;
+  padding: 1rem 0;
 }
+
 .item {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 2rem;
+  background: #f8fafc;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+  border-left: 6px solid #ffb300; /* Accent color */
 }
+
+.item:hover {
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+}
+
 .item-text {
+  flex: 2;
+  padding: 1.5rem 1.5rem 1.5rem 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  font-family: 'Segoe UI', 'Arial', sans-serif;
+  color: #222;
+}
+
+.item-text p {
+  margin: 0;
+  font-size: 1.1rem;
+  line-height: 1.7;
+}
+
+.item-image {
   flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+  min-width: 180px;
+  max-width: 320px;
 }
+
 .item-image img {
-  max-width: 300px;
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  max-width: 100%;
+  max-height: 180px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  object-fit: cover;
 }
-@media (max-width: 700px) {
+
+@media (max-width: 900px) {
   .item {
     flex-direction: column;
-    align-items: flex-start;
+    align-items: stretch;
+  }
+  .item-image {
+    max-width: 100%;
+    min-width: 0;
+    padding: 1rem;
   }
   .item-image img {
-    max-width: 100%;
+    max-height: 220px;
+    width: 100%;
+  }
+  .item-text {
+    padding: 1rem;
   }
 }
 </style>

@@ -1,17 +1,96 @@
 ---
+import Layout from '../layouts/BlogPost.astro';
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
 import IssueList from '../components/IssueList.astro';
+type Props = CollectionEntry<'blog'>['data'];
 
+const { title, description, pubDate, updatedDate, heroImage } = Astro.props;
 const items = [
   {
-    text: "This is the first item. It has a description on the left.",
-    imgSrc: "/images/example1.jpg",
-    imgAlt: "Example 1"
+    symptom: "Negatives appear thin and light; prints are faint with low contrast.",
+    causes: "Insufficient development time, low developer temperature, or exhausted chemicals.",
+    prevention: "Check developer freshness, use correct temperature and timing.",
+    imgSrc: "/images/underdeveloped.jpg",
+    imgAlt: "Underdeveloped film example"
   },
   {
-    text: "This is the second item. The image is also on the right.",
-    imgSrc: "/images/example2.jpg",
-    imgAlt: "Example 2"
-  }
+    symptom: "Negatives are very dark and dense; prints have high contrast and loss of detail.",
+    causes: "Too long development time, high temperature, or overactive chemicals.",
+    prevention: "Follow recommended development time and temperature.",
+    imgSrc: "/images/overdeveloped.jpg",
+    imgAlt: "Overdeveloped film example"
+  },
+  {symptom: "Streaks, blotches, or uneven density across the film.",
+    causes: "Insufficient agitation during development or uneven chemical distribution.",
+    prevention: "Agitate the tank gently and consistently during development.",
+    imgSrc: "/images/uneven-development.jpg",
+    imgAlt: "Uneven development example"
+  },
+  {
+    symptom: "Spots or streaks on negatives after drying.",
+    causes: "Water marks from hard water or improper drying.",
+    prevention: "Use distilled water for the final rinse and a wetting agent; dry film in a dust-free area.",
+    imgSrc: "/images/water-marks.jpg",
+    imgAlt: "Water marks on film"
+  },
+  {
+    symptom: "Thin, straight lines running through the image.",
+    causes: "Scratches from rough handling or dirty equipment.",
+    prevention: "Handle film carefully and ensure all equipment is clean and free of debris.",
+    imgSrc: "/images/scratches.jpg",
+    imgAlt: "Scratches on film"
+  },
+  {
+    symptom: "Cracked or wrinkled emulsion, resembling a network of lines.",
+    causes: "Sudden temperature changes during processing (reticulation).",
+    prevention: "Maintain consistent temperatures for all chemical baths and washes.",
+    imgSrc: "/images/reticulation.jpg",
+    imgAlt: "Reticulation on film"
+  },
+  {
+    symptom: "Overall gray or hazy negatives.",
+    causes: "Film fogged by light leaks or expired film.",
+    prevention: "Store film properly, check for light leaks, and use fresh film.",
+    imgSrc: "/images/fogged-film.jpg",
+    imgAlt: "Fogged film"
+  },
+  {
+    symptom: "Small, round, clear spots on negatives.",
+    causes: "Air bubbles (air bells) sticking to film during development.",
+    prevention: "Tap the tank gently after pouring in developer to dislodge bubbles.",
+    imgSrc: "/images/air-bells.jpg",
+    imgAlt: "Air bells on film"
+  },
+  {
+    symptom: "Colored or dark stains on negatives.",
+    causes: "Incomplete washing or fixer residue.",
+    prevention: "Wash film thoroughly after fixing; use hypo clearing agent if needed.",
+    imgSrc: "/images/chemical-stains.jpg",
+    imgAlt: "Chemical stains on film"
+  },
+  {
+    symptom: "Bright, irregular patches or streaks on negatives.",
+    causes: "Light leaks during loading, processing, or storage.",
+    prevention: "Load and unload film in subdued light; check tanks and cassettes for leaks.",
+    imgSrc: "/images/light-leaks.jpg",
+    imgAlt: "Light leaks on film"
+	}
 ];
 ---
+<Layout
+	title="Common issues"
+	description="Lorem ipsum dolor sit amet"
+	pubDate={new Date('August 08 2021')}
+	heroImage=""
+>
+
+<h5 style="text-align: justify;">
+Here is the list of some common issues one could encounter when developing films. The list is, by no means, exhaustive and definitive.
+It only serves as a quick reference for troubleshooting. The aim is to point you in the hopefully direction so you don't have to keep scratching
+your head in frustration and looking for issues in the wrong places.
+</h5>
 <IssueList items={items} />
