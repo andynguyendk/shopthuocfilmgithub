@@ -1,12 +1,4 @@
-# Serve index.html for root
-/ /index.html 200
-
-# Route mappings
+# Simple routing for Cloudflare Pages
 /products /index.html 200
 /blog /blog.html 200
 /common-issues /common-issues.html 200
-
-# HTML file redirects
-/products.html /index.html 200
-/blog.html /blog.html 200
-/common-issues.html /common-issues.html 200
