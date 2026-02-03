@@ -22,9 +22,66 @@
             margin: 0 auto;
             padding: 40px 20px;
         }
+        nav {
+            background: rgba(255, 255, 255, 0.05);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 0 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            padding: 20px 0;
+            font-size: 1.4rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #e94560, #ff6b6b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .nav-links {
+            display: flex;
+            gap: 5px;
+        }
+        .nav-links a {
+            padding: 20px 15px;
+            color: #aaa;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #e94560;
+        }
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 15px;
+            right: 15px;
+            height: 2px;
+            background: #e94560;
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            transform: scaleX(1);
+        }
         header {
             text-align: center;
             margin-bottom: 60px;
+            padding-top: 20px;
         }
         h1 {
             font-size: 3rem;
@@ -110,6 +167,17 @@
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <div class="nav-logo">🎬 Shop Thuoc Film</div>
+            <div class="nav-links">
+                <a href="/products/" class="active">Products</a>
+                <a href="/blog/">Blog</a>
+                <a href="/common-issues/">Common Issues</a>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <header>
             <h1>🎬 Shop Thuoc Film</h1>

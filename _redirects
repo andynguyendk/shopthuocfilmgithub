@@ -1,6 +1,12 @@
 # Serve index.html for all routes
 /* /index.html 200
 
-# products route
+# Route mappings
 /products /index.html 200
+/blog /blog.html 200
+/common-issues /common-issues.html 200
+
+# HTML file redirects
 /products.html /index.html 200
+/blog.html /blog.html 200
+/common-issues.html /common-issues.html 200
