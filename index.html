@@ -3,85 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Thuoc Film - Developing Chemicals</title>
-    <!-- TEST COMMENT: If you see this, Cloudflare is working -->
+    <title>Shop Thuoc Film</title>
+    <script>
+        // Browser language detection - auto-redirect to correct language
+        (function() {
+            var lang = navigator.language || navigator.userLanguage;
+            var langCode = lang.toLowerCase().substring(0, 2);
+            
+            // Vietnamese browser? Redirect to /vi/
+            // Otherwise, default to /en/
+            var targetLang = (langCode === 'vi' || langCode === 'vi-vn') ? 'vi' : 'en';
+            
+            // Only redirect if not already on the correct language page
+            if (!window.location.pathname.startsWith('/' + targetLang)) {
+                window.location.replace('/' + targetLang + '/');
+            }
+        })();
+    </script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             min-height: 100vh;
             color: #eee;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-        nav {
-            background: rgba(255, 255, 255, 0.05);
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 0 20px;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            padding: 0 20px;
+            justify-content: center;
         }
-        .nav-logo {
-            padding: 20px 0;
-            font-size: 1.4rem;
-            font-weight: bold;
-            background: linear-gradient(90deg, #e94560, #ff6b6b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .nav-links {
-            display: flex;
-            gap: 5px;
-        }
-        .nav-links a {
-            padding: 20px 15px;
-            color: #aaa;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-            font-size: 0.95rem;
-        }
-        .nav-links a:hover,
-        .nav-links a.active {
-            color: #e94560;
-        }
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 15px;
-            right: 15px;
-            height: 2px;
-            background: #e94560;
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-        .nav-links a:hover::after,
-        .nav-links a.active::after {
-            transform: scaleX(1);
-        }
-        header {
+        .container {
             text-align: center;
-            margin-bottom: 60px;
-            padding-top: 20px;
+            padding: 20px;
         }
         h1 {
             font-size: 3rem;
@@ -94,161 +46,47 @@
         .subtitle {
             color: #888;
             font-size: 1.2rem;
+            margin-bottom: 30px;
         }
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-        .product-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 16px;
-            padding: 30px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .product-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(233, 69, 96, 0.2);
-        }
-        .product-icon {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
-        .product-title {
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            color: #e94560;
-        }
-        .product-description {
-            color: #aaa;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        .product-price {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #fff;
-        }
-        .product-price span {
+        .redirecting {
+            color: #666;
             font-size: 1rem;
-            color: #888;
+            margin-bottom: 30px;
         }
-        .product-details {
-            margin-top: 15px;
-            padding-top: 15px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            font-size: 0.9rem;
-            color: #666;
-        }
-        .tag {
+        .lang-btn {
             display: inline-block;
+            margin: 15px;
+            padding: 15px 30px;
             background: rgba(233, 69, 96, 0.2);
-            color: #e94560;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            margin-top: 15px;
+            border: 2px solid #e94560;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
         }
-        footer {
-            text-align: center;
-            margin-top: 60px;
-            color: #666;
-            font-size: 0.9rem;
+        .lang-btn:hover {
+            background: #e94560;
+            transform: translateY(-2px);
         }
         @media (max-width: 600px) {
-            h1 {
-                font-size: 2rem;
-            }
-            .container {
-                padding: 20px 15px;
-            }
+            h1 { font-size: 2rem; }
+            .lang-btn { padding: 12px 20px; font-size: 1rem; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="nav-logo">🎬 Shop Thuoc Film</div>
-            <div class="nav-links">
-                <a href="/products/" class="active">Products</a>
-                <a href="/blog/">Blog</a>
-                <a href="/common-issues/">Common Issues</a>
-            </div>
-        </div>
-    </nav>
-
     <div class="container">
-        <header>
-            <h1>🎬 Shop Thuoc Film</h1>
-            <p class="subtitle">Quality Developing Chemicals for Analog Photography</p>
-        </header>
-
-        <div class="products">
-            <!-- Product 1: Developer -->
-            <div class="product-card">
-                <div class="product-icon">🧪</div>
-                <h2 class="product-title">D-76 Developer</h2>
-                <p class="product-description">Classic black & white film developer. Produces fine grain and excellent tonal range. Perfect for most B&W films.</p>
-                <div class="product-price">$12.99 <span>/ 500ml</span></div>
-                <div class="product-details">Makes 2L working solution • Shelf life: 6 months</div>
-                <span class="tag">Best Seller</span>
-            </div>
-
-            <!-- Product 2: Stop Bath -->
-            <div class="product-card">
-                <div class="product-icon">⚡</div>
-                <h2 class="product-title">Acetic Stop Bath</h2>
-                <p class="product-description">Instantly stops development process. Extends fixer life and ensures consistent results. Dilute 1:19 with water.</p>
-                <div class="product-price">$8.50 <span>/ 1L</span></div>
-                <div class="product-details">Indicator dye included • Low odor formula</div>
-                <span class="tag">Essential</span>
-            </div>
-
-            <!-- Product 3: Fixer -->
-            <div class="product-card">
-                <div class="product-icon">🔒</div>
-                <h2 class="product-title">Rapid Fixer</h2>
-                <p class="product-description">Fast-acting fixer for films and papers. Non-hardening formula works with all B&W materials. Dilute 1:4.</p>
-                <div class="product-price">$15.99 <span>/ 1L</span></div>
-                <div class="product-details">Fixing time: 2-3 min • Hardener optional</div>
-                <span class="tag">New</span>
-            </div>
-
-            <!-- Product 4: Paper Developer -->
-            <div class="product-card">
-                <div class="product-icon">📄</div>
-                <h2 class="product-title">Dektol Paper Developer</h2>
-                <p class="product-description">Versatile liquid concentrate for black & white photographic papers. Rich blacks and clean highlights. Dilute 1:2.</p>
-                <div class="product-price">$18.50 <span>/ 1L</span></div>
-                <div class="product-details">Makes 4L working solution • Variable contrast</div>
-                <span class="tag">Pro Choice</span>
-            </div>
-
-            <!-- Product 5: Ilford HC -->
-            <div class="product-card">
-                <div class="product-icon">🌟</div>
-                <h2 class="product-title">Ilford HC-110</h2>
-                <p class="product-description">Highly concentrated syrup developer. Economical and versatile. Works with all B&W films at various dilutions.</p>
-                <div class="product-price">$22.00 <span>/ 500ml</span></div>
-                <div class="product-details">Makes up to 100L • Excellent sharpness</div>
-                <span class="tag">Popular</span>
-            </div>
-
-            <!-- Product 6: Rodinal -->
-            <div class="product-card">
-                <div class="product-icon">💎</div>
-                <h2 class="product-title">Rodinal Developer</h2>
-                <p class="product-description">Legendary 130-year-old formula. Sharp grain, high acutance. One of the oldest developers still in production.</p>
-                <div class="product-price">$16.50 <span>/ 500ml</span></div>
-                <div class="product-details">Near infinite shelf life • Dilute 1:25 to 1:50</div>
-                <span class="tag">Classic</span>
-            </div>
+        <h1>🎬 Shop Thuoc Film</h1>
+        <p class="subtitle">Detecting your language / Đang phát hiện ngôn ngữ</p>
+        <div style="margin-top: 30px;">
+            <p style="color: #888; margin-bottom: 20px;">Redirecting to your preferred language...<br>Đang chuyển đến ngôn ngữ ưa thích của bạn...</p>
         </div>
-
-        <footer>
-            <p>© 2026 Shop Thuoc Film — Analog Photography Essentials</p>
-        </footer>
+        <div>
+            <a href="/en/" class="lang-btn">🇬🇧 English</a>
+            <a href="/vi/" class="lang-btn">🇻🇳 Tiếng Việt</a>
+        </div>
     </div>
 </body>
 </html>
